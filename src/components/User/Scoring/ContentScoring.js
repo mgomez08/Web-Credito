@@ -75,7 +75,7 @@ export default function ContentScoring() {
     };
     fetchScoringData();
   }, []);
-
+  
   const onSubmitScoring = async (data, e) => {
     e.preventDefault();
     setValueScoring("");
@@ -114,15 +114,16 @@ export default function ContentScoring() {
       }
     }
   };
-
+  
+  
   const classes = useStyles();
   return !scoringForm ? (
     <ProgressCircular
-      variantMessage="h4"
-      message="Cargando su información, por favor espere un momento"
+    variantMessage="h4"
+    message="Cargando su información, por favor espere un momento"
     />
-  ) : (
-    <Grid container direction="column" justify="center" alignItems="center">
+    ) : (
+      <Grid container direction="column" justify="center" alignItems="center">
       <Typography color="initial" align="justify" variant="body1">
         Complete la información de los campos y oprime el botón "calcular.
         scoring"
