@@ -72,11 +72,11 @@ export const FormPassword = () => {
     } else {
       const result = await changePasswordApi(data, getAccessTokenApi());
       if (result.ok) {
-        setMessage("La contraseña se cambió correctamente");
+        setMessage(result.msg);
         handleClick("success");
         e.target.reset();
       } else {
-        setMessage(result.message);
+        setMessage(result.msg);
         handleClick("error");
       }
     }
