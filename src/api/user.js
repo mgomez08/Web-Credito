@@ -156,7 +156,7 @@ export const saveFormProgressApi = async (data, token) => {
 };
 
 export const getFormProgressApi = async (token) => {
-  const url = `${basePath}/${apiVersion}/get-form-progress`;
+  const url = `${BASE_URL}/get-form-progress`;
   const params = {
     method: "GET",
     headers: {
@@ -164,20 +164,20 @@ export const getFormProgressApi = async (token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const saveScoringInfoApi = async (data, token) => {
-  const url = `${basePath}/${apiVersion}/save-scoring-info`;
+  const url = `${BASE_URL}/save-scoring-info`;
   const params = {
     method: "POST",
     body: JSON.stringify(data),
@@ -186,20 +186,20 @@ export const saveScoringInfoApi = async (data, token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const getScoringInfoApi = async (token) => {
-  const url = `${basePath}/${apiVersion}/get-scoring-info`;
+  const url = `${BASE_URL}/get-scoring-info`;
   const params = {
     method: "GET",
     headers: {
@@ -207,20 +207,20 @@ export const getScoringInfoApi = async (token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const calculateScoringApi = async (token) => {
-  const url = `${basePath}/${apiVersion}/calculate-scoring`;
+  const url = `${BASE_URL}/calculate-scoring`;
   const params = {
     method: "GET",
     headers: {
@@ -228,35 +228,14 @@ export const calculateScoringApi = async (token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
-};
-
-export const getScoringApi = async (token) => {
-  const url = `${basePath}/${apiVersion}/get-scoring`;
-  const params = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: token,
-    },
-  };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
