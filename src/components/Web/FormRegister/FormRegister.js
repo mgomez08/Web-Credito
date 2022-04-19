@@ -17,7 +17,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Alert from "@material-ui/lab/Alert";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { signUpApi } from "../../../api/user";
+import { signUpApi } from "../../../api/auth";
 import "./FormRegister.scss";
 import { Link, Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -41,11 +41,15 @@ export default function FormRegister() {
     privacyPolicy: false,
     showPassword: false,
   });
-  if(redirect){
-    return <Redirect to={{
-      pathname: "/login",
-      state: {register: true}
-    }} />;
+  if (redirect) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/login",
+          state: { register: true },
+        }}
+      />
+    );
   }
   const handleChange = (e) => {
     if (e.target.type === "checkbox") {

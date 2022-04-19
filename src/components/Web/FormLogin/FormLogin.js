@@ -12,7 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import "./FormLogin.scss";
-import { signInApi } from "../../../api/user";
+import { signInApi } from "../../../api/auth";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/constants";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -36,7 +36,7 @@ export default function FormLogin() {
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  
+
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -54,8 +54,8 @@ export default function FormLogin() {
   const onSubmit = async (data, e) => {
     e.preventDefault();
     const result = await signInApi(inputs);
-    if (result.message) {
-      setMessage(result.message);
+    if (!result.ok) {
+      setMessage(result.msg);
       handleClick("error");
     } else {
       const { accessToken, refreshToken } = result;
@@ -66,7 +66,7 @@ export default function FormLogin() {
       window.location.href = "/";
     }
   };
-  
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid
@@ -76,7 +76,7 @@ export default function FormLogin() {
         alignItems="center"
         spacing={3}
         className="form-login"
-        >
+      >
         <Grid item xs={12}>
           <TextField
             label="Correo Electrónico"
@@ -90,7 +90,8 @@ export default function FormLogin() {
             inputRef={register({
               required: { value: true, message: "Campo obligatorio" },
               pattern: {
-                value: /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/,
+                value:
+                  /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/,
                 message: "El correo electrónico ingresado no es valido",
               },
             })}
@@ -151,7 +152,12 @@ export default function FormLogin() {
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Typography align="center" variant="h6" color="initial" onClick={window.scroll(0, 0)}>
+            <Typography
+              align="center"
+              variant="h6"
+              color="initial"
+              onClick={window.scroll(0, 0)}
+            >
               ¿Aún no estás registrado?
               <Link to="/register"> Regístrate aquí</Link>
             </Typography>
