@@ -105,8 +105,7 @@ export default function VerticalTab(props) {
       const columnsNulls = await getColumnsNullsApi(getAccessTokenApi());
       if (!unmounted) {
         setProgress(
-          (totalcolumns - columnsNulls.columnsNulls[0].value) *
-            (100 / totalcolumns)
+          (totalcolumns - columnsNulls.data.value) * (100 / totalcolumns)
         );
       }
     };
@@ -114,7 +113,13 @@ export default function VerticalTab(props) {
     return () => {
       unmounted = true;
     };
-  }, [onSubmitPersonal, onSubmitFinancial, totalcolumns, setProgress, progress]);
+  }, [
+    onSubmitPersonal,
+    onSubmitFinancial,
+    totalcolumns,
+    setProgress,
+    progress,
+  ]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

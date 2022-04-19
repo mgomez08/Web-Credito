@@ -19,13 +19,13 @@ export const changePasswordApi = async (data, token) => {
   } catch (error) {
     return {
       ok: false,
-      msg: error.message,
+      msg: error.msg,
     };
   }
 };
 
 export const savePersonalInfoApi = async (data, token) => {
-  const url = `${basePath}/${apiVersion}/save-personal-info`;
+  const url = `${BASE_URL}/save-personal-info`;
   const params = {
     method: "POST",
     body: JSON.stringify(data),
@@ -34,20 +34,20 @@ export const savePersonalInfoApi = async (data, token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const getPersonalInfoApi = async (token) => {
-  const url = `${basePath}/${apiVersion}/get-personal-info`;
+  const url = `${BASE_URL}/get-personal-info`;
   const params = {
     method: "GET",
     headers: {
@@ -55,20 +55,20 @@ export const getPersonalInfoApi = async (token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const saveFinancialInfoApi = async (data, token) => {
-  const url = `${basePath}/${apiVersion}/save-financial-info`;
+  const url = `${BASE_URL}/save-financial-info`;
   const params = {
     method: "POST",
     body: JSON.stringify(data),
@@ -77,20 +77,20 @@ export const saveFinancialInfoApi = async (data, token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const getFinancialInfoApi = async (token) => {
-  const url = `${basePath}/${apiVersion}/get-financial-info`;
+  const url = `${BASE_URL}/get-financial-info`;
   const params = {
     method: "GET",
     headers: {
@@ -98,20 +98,21 @@ export const getFinancialInfoApi = async (token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const getColumnsNullsApi = async (token) => {
-  const url = `${basePath}/${apiVersion}/get-columns-nulls`;
+  const url = `${BASE_URL}/get-columns-nulls`;
   const params = {
     method: "GET",
     headers: {
@@ -119,20 +120,21 @@ export const getColumnsNullsApi = async (token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const saveFormProgressApi = async (data, token) => {
-  const url = `${basePath}/${apiVersion}/save-form-progress`;
+  const url = `${BASE_URL}/save-form-progress`;
   const params = {
     method: "POST",
     body: JSON.stringify(data),
@@ -141,16 +143,16 @@ export const saveFormProgressApi = async (data, token) => {
       Authorization: token,
     },
   };
-  return fetch(url, params)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err.message;
-    });
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
 };
 
 export const getFormProgressApi = async (token) => {

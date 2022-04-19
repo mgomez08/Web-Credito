@@ -51,8 +51,8 @@ export default function InformationTabs() {
     const fetchData = async () => {
       const personalData = await getPersonalInfoApi(getAccessTokenApi());
       const financialData = await getFinancialInfoApi(getAccessTokenApi());
-      setUserPersonalData(personalData.userStored[0]);
-      setUserFinancialData(financialData.userStored[0]);
+      setUserPersonalData(personalData.data);
+      setUserFinancialData(financialData.data);
     };
     fetchData();
   }, []);
@@ -106,15 +106,15 @@ function Tabs(props) {
       userFinancialData,
       getAccessTokenApi()
     );
-    if (result.message) {
-      setMessage(result.message);
-      setOpenError(true);
-    } else {
+    if (result.ok) {
       await saveFormProgressApi({ progress }, getAccessTokenApi());
       setOpen(true);
       if (progress === 100) {
         handleOpenModal();
       }
+    } else {
+      setMessage(result.msg);
+      setOpenError(true);
     }
     window.scroll(0, 0);
   };
@@ -128,15 +128,15 @@ function Tabs(props) {
       userPersonalData,
       getAccessTokenApi()
     );
-    if (result.message) {
-      setMessage(result.message);
-      setOpenError(true);
-    } else {
+    if (result.ok) {
       await saveFormProgressApi({ progress }, getAccessTokenApi());
       setOpen(true);
       if (progress === 100) {
         handleOpenModal();
       }
+    } else {
+      setMessage(result.message);
+      setOpenError(true);
     }
     window.scroll(0, 0);
   };
@@ -153,7 +153,8 @@ function Tabs(props) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Ahora puede calcular su puntaje scoring haciendo en el botón "Calcular Scoring".
+            Ahora puede calcular su puntaje scoring haciendo en el botón
+            "Calcular Scoring".
           </DialogContentText>
         </DialogContent>
         <DialogActions>
