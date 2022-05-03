@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./LayoutBasic.scss";
-import MenuTop from "../components/Web/MenuTop";
 import { makeStyles } from "@material-ui/core";
-import Drawer from "../components/Web/MenuTop/Drawer";
+import MenuTop from "../components/Others/Header/MenuTop";
+import Drawer from "../components/Others/Header/Drawer";
+import MenusWeb from "../components/Web/Menus/Menus";
+import MenusUser from "../components/User/Menus/Menus";
+import useAuth from "../hooks/useAuth";
 
 const styles = makeStyles((theme) => ({
   root: {
@@ -30,6 +33,8 @@ export default function LayoutBasic() {
   const classes = styles();
   const [open, setOpen] = useState(false);
 
+  const { user } = useAuth();
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -40,8 +45,16 @@ export default function LayoutBasic() {
 
   return (
     <div className={classes.root}>
-      <MenuTop open={open} handleDrawerOpen={handleDrawerOpen} />
-      <Drawer open={open} handleDrawerClose={handleDrawerClose} />
+      <MenuTop
+        menus={user ? (user.role === 1 ? MenusUser : MenusUser) : MenusWeb}
+        open={open}
+        handleDrawerOpen={handleDrawerOpen}
+      />
+      <Drawer
+        menus={user ? (user.role === 1 ? MenusUser : MenusUser) : MenusWeb}
+        open={open}
+        handleDrawerClose={handleDrawerClose}
+      />
     </div>
   );
 }
