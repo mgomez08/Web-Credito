@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LayoutBasic from "../layouts/LayoutBasic";
-import LayoutUser from "../layouts/LayoutUser";
 
 import Footer from "../components/Web/Footer";
 
@@ -22,7 +21,7 @@ import Scoring from "../pages/Scoring/Scoring";
 import Banks from "../pages/Banks/Banks";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
 
-import {ScrollToTop} from "../utils/ScrollToTop"
+import { ScrollToTop } from "../utils/ScrollToTop";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +53,7 @@ export const AppRouter = () => {
       <Router>
         <ScrollToTop />
         <div className={classes.root}>
-          {user ? <LayoutUser /> : <LayoutBasic />}
+          <LayoutBasic />
           <main className={classes.main}>
             <Switch>
               <PublicRoute
