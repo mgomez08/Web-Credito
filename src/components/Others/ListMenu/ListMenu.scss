@@ -1,0 +1,15 @@
+@import "../../../scss/index.scss";
+.list-menu {
+  a {
+    text-decoration: none;
+  }
+  .MuiTypography-body1 {
+    color: $primary-color;
+  }
+  .MuiListItem-button {
+    color: $primary-color;
+  }
+  .MuiButtonBase-root {
+    color: $primary-color;
+  }
+}
