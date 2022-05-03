@@ -21,7 +21,7 @@ import {
   saveFormProgressApi,
 } from "../../../../api/user";
 import "./InformationTabs.scss";
-import { ProgressCircular } from "../../../Content/ProgressCircular";
+import { ProgressCircular } from "../../../Others/ProgressCircular";
 
 const useStyles = makeStyles((theme) => ({
   root: {

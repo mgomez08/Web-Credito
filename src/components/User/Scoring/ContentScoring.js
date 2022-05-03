@@ -9,7 +9,7 @@ import {
   saveScoringInfoApi,
 } from "../../../api/user";
 import { getAccessTokenApi } from "../../../api/auth";
-import { ProgressCircular } from "../../Content/ProgressCircular";
+import { ProgressCircular } from "../../Others/ProgressCircular";
 import { FormScoring } from "./FormScoring";
 const useStyles = makeStyles((theme) => ({
   root: {
