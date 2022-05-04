@@ -75,6 +75,7 @@ export default function MenuTop({ open, handleDrawerOpen, menus }) {
                     <Button
                       color="inherit"
                       variant="outlined"
+                      onClick={menu.hasAction && menu.action}
                       endIcon={<ArrowForwardIosIcon />}
                     >
                       {menu.name}
