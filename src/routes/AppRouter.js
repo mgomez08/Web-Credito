@@ -23,6 +23,7 @@ import ChangePassword from "../pages/ChangePassword/ChangePassword";
 
 import { ScrollToTop } from "../utils/ScrollToTop";
 import { makeStyles } from "@material-ui/core/styles";
+import { AdminRoute } from "./AdminRoute";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -106,6 +107,13 @@ export const AppRouter = () => {
                 path="/changepassword"
                 component={ChangePassword}
                 isLoggedIn={!!user}
+              />
+              <AdminRoute
+                exact
+                path="/dashboard"
+                component={ChangePassword}
+                isLoggedIn={!!user}
+                role={user?.role}
               />
               <Route component={Error404} />
             </Switch>
