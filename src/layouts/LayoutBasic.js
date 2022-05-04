@@ -5,6 +5,7 @@ import MenuTop from "../components/Others/Header/MenuTop";
 import Drawer from "../components/Others/Header/Drawer";
 import MenusWeb from "../components/Web/Menus/Menus";
 import MenusUser from "../components/User/Menus/Menus";
+import MenusAdmin from "../components/Admin/Menus/Menus";
 import useAuth from "../hooks/useAuth";
 
 const styles = makeStyles((theme) => ({
@@ -46,12 +47,12 @@ export default function LayoutBasic() {
   return (
     <div className={classes.root}>
       <MenuTop
-        menus={user ? (user.role === 1 ? MenusUser : MenusUser) : MenusWeb}
+        menus={user ? (user.role === 1 ? MenusUser : MenusAdmin) : MenusWeb}
         open={open}
         handleDrawerOpen={handleDrawerOpen}
       />
       <Drawer
-        menus={user ? (user.role === 1 ? MenusUser : MenusUser) : MenusWeb}
+        menus={user ? (user.role === 1 ? MenusUser : MenusAdmin) : MenusWeb}
         open={open}
         handleDrawerClose={handleDrawerClose}
       />
