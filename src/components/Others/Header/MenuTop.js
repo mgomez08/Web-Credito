@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -6,12 +6,15 @@ import {
   makeStyles,
   IconButton,
   Hidden,
+  Menu,
+  MenuItem,
 } from "@material-ui/core";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import MenuIcon from "@material-ui/icons/Menu";
 import Logo from "../../../assets/img/png/Logo.png";
+import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   hide: {
@@ -44,11 +47,26 @@ const useStyles = makeStyles((theme) => ({
   MuiSpacebetween: {
     justifyContent: "space-between",
   },
+  inlineBlock: {
+    display: "inline-block",
+  },
+  textLink: {
+    color: "#000",
+    textDecoration: "none",
+  },
   offset: theme.mixins.toolbar,
 }));
 
 export default function MenuTop({ open, handleDrawerOpen, menus }) {
+  const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <>
       <AppBar
@@ -66,22 +84,88 @@ export default function MenuTop({ open, handleDrawerOpen, menus }) {
           <div className="menus">
             <Hidden smDown>
               {menus.map((menu, index) => {
-                return menu.hasButton ? (
-                  <Link
-                    className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
-                    to={menu.link}
-                    key={index}
-                  >
-                    <Button
-                      color="inherit"
-                      variant="outlined"
-                      onClick={menu.hasAction && menu.action}
-                      endIcon={<ArrowForwardIosIcon />}
+                if (menu.hasButton) {
+                  return (
+                    <Link
+                      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
+                      to={menu.link}
+                      key={index}
                     >
-                      {menu.name}
-                    </Button>
-                  </Link>
-                ) : (
+                      <Button
+                        color="inherit"
+                        variant="outlined"
+                        onClick={menu.hasAction && menu.action}
+                        endIcon={<ArrowForwardIosIcon />}
+                      >
+                        {menu.name}
+                      </Button>
+                    </Link>
+                  );
+                }
+
+                if (menu.hasSubMenus) {
+                  return (
+                    <div className={classes.inlineBlock} key={index}>
+                      <Button
+                        color="inherit"
+                        aria-controls="simple-menu"
+                        aria-haspopup="true"
+                        onClick={handleClick}
+                      >
+                        {menu.name}
+                        {Boolean(anchorEl) ? <ExpandLess /> : <ExpandMore />}
+                      </Button>
+                      <Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        {menu.subMenus.map((subMenu, index) => {
+                          return (
+                            <Link
+                              className={classes.textLink}
+                              to={subMenu.link}
+                              key={index}
+                            >
+                              <MenuItem onClick={handleClose}>
+                                {subMenu.name}
+                              </MenuItem>
+                            </Link>
+                          );
+                        })}
+                      </Menu>
+                    </div>
+
+                    // <div className="special" key={index}>
+                    //   <ListItem button onClick={handleClick}>
+                    //     <ListItemText primary={menu.name} />
+                    //     {openMenu ? <ExpandLess /> : <ExpandMore />}
+                    //   </ListItem>
+                    //   <Collapse in={openMenu} timeout="auto" unmountOnExit>
+                    //     <List component="div" disablePadding>
+                    //       {menu.subMenus.map((subMenu, index) => {
+                    //         return (
+                    //           <Link to={subMenu.link} key={index}>
+                    //             <ListItem
+                    //               button
+                    //               className={classes.nested}
+                    //               onClick={handleClick}
+                    //             >
+                    //               <ListItemIcon>{subMenu.icon}</ListItemIcon>
+                    //               <ListItemText primary={subMenu.name} />
+                    //             </ListItem>
+                    //           </Link>
+                    //         );
+                    //       })}
+                    //     </List>
+                    //   </Collapse>
+                    // </div>
+                  );
+                }
+
+                return (
                   <Link
                     className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-colorInherit"
                     to={menu.link}
