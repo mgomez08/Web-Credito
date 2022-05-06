@@ -4,13 +4,26 @@ import ScoreIcon from "@material-ui/icons/Score";
 import PersonIcon from "@material-ui/icons/Person";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import { logout } from "../../../api/auth";
 
 const Menus = [
   {
     name: "Perfil",
     icon: <PersonPinIcon />,
-    link: "/perfil",
+    hasSubMenus: true,
+    subMenus: [
+      {
+        name: "Editar Perfil",
+        icon: <PersonIcon />,
+        link: "/perfil",
+      },
+      {
+        name: "Cambiar Contraseña",
+        icon: <VpnKeyIcon />,
+        link: "/changepassword",
+      },
+    ],
   },
   {
     name: "Scoring",
@@ -18,15 +31,16 @@ const Menus = [
     link: "/calcular-scoring",
   },
   {
+    name: "Simulación de Créditos",
+    icon: <LocalAtmIcon />,
+    link: "/simulacion-creditos",
+  },
+  {
     name: "Bancos",
     icon: <AccountBalanceIcon />,
     link: "/banks",
   },
-  {
-    name: "Cambiar Contraseña",
-    icon: <VpnKeyIcon />,
-    link: "/changepassword",
-  },
+
   {
     name: "Cerrar Sesión",
     icon: <PersonIcon />,
