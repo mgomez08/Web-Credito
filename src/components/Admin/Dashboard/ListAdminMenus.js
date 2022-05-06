@@ -33,7 +33,7 @@ const ListAdminMenus = () => {
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
-            <ListItemText primary="Lista de Usuarios" />
+            <ListItemText primary="Lista de Bancos" />
           </ListItem>
         </Grid>
         <Grid item xs={6} sm={4} md={3}>
