@@ -5,6 +5,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import PeopleIcon from "@material-ui/icons/People";
+import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import DehazeIcon from "@material-ui/icons/Dehaze";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
 import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,25 +26,25 @@ const ListAdminMenus = () => {
         <Grid item xs={6} sm={4} md={3}>
           <ListItem button>
             <ListItemIcon>
-              <PeopleIcon />
+              <AccountBalanceIcon />
             </ListItemIcon>
-            <ListItemText primary="Lista de Usuarios" />
+            <ListItemText primary="Bancos" />
           </ListItem>
         </Grid>
         <Grid item xs={6} sm={4} md={3}>
           <ListItem button>
             <ListItemIcon>
-              <PeopleIcon />
+              <DehazeIcon />
             </ListItemIcon>
-            <ListItemText primary="Lista de Bancos" />
+            <ListItemText primary="Servicios" />
           </ListItem>
         </Grid>
         <Grid item xs={6} sm={4} md={3}>
           <ListItem button>
             <ListItemIcon>
-              <PeopleIcon />
+              <EqualizerIcon />
             </ListItemIcon>
-            <ListItemText primary="Lista de Usuarios" />
+            <ListItemText primary="Tasas de Interés" />
           </ListItem>
         </Grid>
         <Grid item xs={6} sm={4} md={3}>
