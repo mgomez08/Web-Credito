@@ -4,7 +4,6 @@ import FormBanks from "./FormBanks";
 import { getBankApi } from "../../../api/banks";
 import { ProgressCircular } from "../../Others/ProgressCircular";
 import { useParams } from "react-router-dom";
-import { getAccessTokenApi } from "../../../api/auth";
 import Swal from "sweetalert2";
 import { Redirect } from "react-router-dom";
 
@@ -14,7 +13,7 @@ const EditBank = () => {
   const { id } = useParams();
   useEffect(() => {
     (async () => {
-      const response = await getBankApi(id, getAccessTokenApi());
+      const response = await getBankApi(id);
       if (response.ok) {
         setBank(response.data);
       } else {

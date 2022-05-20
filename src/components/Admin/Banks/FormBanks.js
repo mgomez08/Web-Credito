@@ -41,6 +41,13 @@ const FormBanks = ({ mode, bank }) => {
           timer: 1500,
         });
         setRedirectToList(true);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: response.msg,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } else {
       const response = await updateBankApi(id, data);
@@ -52,6 +59,13 @@ const FormBanks = ({ mode, bank }) => {
           timer: 1500,
         });
         setRedirectToList(true);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: response.msg,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     }
   };
