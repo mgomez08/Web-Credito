@@ -36,7 +36,7 @@ const FormBanks = ({ mode, bank }) => {
       if (response.ok) {
         Swal.fire({
           icon: "success",
-          title: "Banco creado correctamente",
+          title: response.msg,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -54,7 +54,7 @@ const FormBanks = ({ mode, bank }) => {
       if (response.ok) {
         Swal.fire({
           icon: "success",
-          title: "Banco actualizado correctamente",
+          title: response.msg,
           showConfirmButton: false,
           timer: 1500,
         });
