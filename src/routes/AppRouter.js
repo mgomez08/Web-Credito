@@ -21,14 +21,11 @@ import Scoring from "../pages/Scoring/Scoring";
 import Banks from "../pages/Banks/Banks";
 import ChangePassword from "../pages/ChangePassword/ChangePassword";
 
-import Dashboard from "../pages/Admin/Dashboard/Dashboard";
-import BanksAdmin from "../pages/Admin/Banks/Banks";
-
 import { ScrollToTop } from "../utils/ScrollToTop";
 import { makeStyles } from "@material-ui/core/styles";
+
 import { AdminRoute } from "./AdminRoute";
-import CreateBank from "../components/Admin/Banks/CreateBank";
-import EditBank from "../components/Admin/Banks/EditBank";
+import { AdminRouter } from "./routers/AdminRouter";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -114,34 +111,11 @@ export const AppRouter = () => {
                 isLoggedIn={!!user}
               />
               <AdminRoute
-                exact
+                role={user?.role}
+                isLoggedIn={!!user}
                 path="/dashboard"
-                component={Dashboard}
-                isLoggedIn={!!user}
-                role={user?.role}
+                component={AdminRouter}
               />
-              <AdminRoute
-                exact
-                path="/dashboard/banks"
-                component={BanksAdmin}
-                isLoggedIn={!!user}
-                role={user?.role}
-              />
-              <AdminRoute
-                exact
-                path="/dashboard/banks/create"
-                component={CreateBank}
-                isLoggedIn={!!user}
-                role={user?.role}
-              />
-              <AdminRoute
-                exact
-                path="/dashboard/banks/edit/:id"
-                component={EditBank}
-                isLoggedIn={!!user}
-                role={user?.role}
-              />
-
               <Route component={Error404} />
             </Switch>
           </main>
