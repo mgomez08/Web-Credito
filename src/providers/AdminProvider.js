@@ -5,6 +5,7 @@ export const AdminContext = createContext();
 export default function AdminProvider(props) {
   const { children } = props;
   const [banks, setBanks] = useState();
+  const [services, setServices] = useState();
   const [tmp, setTmp] = useState();
 
   return (
@@ -12,6 +13,8 @@ export default function AdminProvider(props) {
       value={{
         banks,
         setBanks,
+        services,
+        setServices,
         tmp,
         setTmp,
       }}
