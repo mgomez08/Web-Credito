@@ -73,11 +73,11 @@ const TableBanks = () => {
         stickyHeader
         size="small"
         className={classes.table}
-        aria-label="Tabla de Categorías"
+        aria-label="Tabla de Bancos"
       >
         <TableHead>
           <TableRow>
-            <TableCell className={classes.tableHead}>ID Categoría</TableCell>
+            <TableCell className={classes.tableHead}>ID Banco</TableCell>
             <TableCell className={classes.tableHead} align="left">
               Nombre
             </TableCell>
