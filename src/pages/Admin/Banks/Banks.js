@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import TableBanks from "../../../components/Admin/Banks/TableBanks";
 import InputSearchBank from "../../../components/Admin/Banks/InputSearchBanks";
 import { AdminContext } from "../../../providers/AdminProvider";
-import { getBanksApi } from "../../../api/banks";
+import { getAllBanksApi } from "../../../api/banks";
 import { ProgressCircular } from "../../../components/Others/ProgressCircular";
 import { EmptyInfo } from "../../../components/Others/EmptyInfo";
 
@@ -12,7 +12,7 @@ const Banks = () => {
   const { banks, setBanks } = useContext(AdminContext);
   useEffect(() => {
     (async () => {
-      const response = await getBanksApi();
+      const response = await getAllBanksApi();
       if (response.ok) {
         setBanks(response.data);
       }
