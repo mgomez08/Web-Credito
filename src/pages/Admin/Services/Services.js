@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { AdminContext } from "../../../providers/AdminProvider";
-import { getServicesApi } from "../../../api/services";
+import { getAllServicesApi } from "../../../api/services";
 import { ProgressCircular } from "../../../components/Others/ProgressCircular";
 import { EmptyInfo } from "../../../components/Others/EmptyInfo";
 import InputSearchServices from "../../../components/Admin/Services/InputSearchServices";
@@ -12,7 +12,7 @@ const Services = () => {
   const { services, setServices } = useContext(AdminContext);
   useEffect(() => {
     (async () => {
-      const response = await getServicesApi();
+      const response = await getAllServicesApi();
       if (response.ok) {
         setServices(response.data);
       }
