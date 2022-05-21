@@ -3,7 +3,7 @@ import { basePath, apiVersion } from "./config";
 
 const BASE_URL = `${basePath}/${apiVersion}/bank`;
 
-export const getBanksApi = async () => {
+export const getAllBanksApi = async () => {
   const url = `${BASE_URL}`;
   const params = {
     method: "GET",

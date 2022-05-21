@@ -3,7 +3,7 @@ import { basePath, apiVersion } from "./config";
 
 const BASE_URL = `${basePath}/${apiVersion}/service`;
 
-export const getServicesApi = async () => {
+export const getAllServicesApi = async () => {
   const url = `${BASE_URL}`;
   const params = {
     method: "GET",
