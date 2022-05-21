@@ -31,7 +31,7 @@ const EditService = () => {
   return (
     <Container maxWidth="sm">
       {!service ? (
-        <ProgressCircular variantMessage="h4" message="Cargando banco..." />
+        <ProgressCircular variantMessage="h4" message="Cargando servicio..." />
       ) : (
         <>
           <Typography align="center" variant="h2" color="initial">
