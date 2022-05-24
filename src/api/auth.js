@@ -70,13 +70,7 @@ export const refreshAccessTokenApi = async (refreshToken) => {
   try {
     const response = await fetch(url, params);
     const result = await response.json();
-    if (result.ok) {
-      const { accessToken, refreshToken } = result;
-      localStorage.setItem(ACCESS_TOKEN, accessToken);
-      localStorage.setItem(REFRESH_TOKEN, refreshToken);
-    } else {
-      logout();
-    }
+    return result;
   } catch (error) {
     return {
       ok: false,

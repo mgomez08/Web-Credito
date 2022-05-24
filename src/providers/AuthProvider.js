@@ -6,6 +6,7 @@ import {
   logout,
 } from "../api/auth";
 import jwtDecode from "jwt-decode";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../utils/constants";
 
 export const AuthContext = createContext();
 
@@ -22,7 +23,7 @@ export default function AuthProvider(props) {
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 }
 
-function checkUserLogin(setUser) {
+async function checkUserLogin(setUser) {
   const accessToken = getAccessTokenApi();
   if (!accessToken) {
     const refreshToken = getRefreshTokenApi();
@@ -33,7 +34,23 @@ function checkUserLogin(setUser) {
         isLoading: false,
       });
     } else {
-      refreshAccessTokenApi(refreshToken);
+      const result = await refreshAccessTokenApi(refreshToken);
+      if (result.ok) {
+        const { accessToken, refreshToken } = result;
+        localStorage.setItem(ACCESS_TOKEN, accessToken);
+        localStorage.setItem(REFRESH_TOKEN, refreshToken);
+        const user = jwtDecode(accessToken);
+        setUser({
+          user,
+          isLoading: false,
+        });
+      } else {
+        logout();
+        setUser({
+          user: null,
+          isLoading: false,
+        });
+      }
     }
   } else {
     setUser({
