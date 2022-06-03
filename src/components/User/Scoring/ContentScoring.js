@@ -64,8 +64,8 @@ export default function ContentScoring() {
   useEffect(() => {
     const fetchScoringData = async () => {
       const result = await getScoringInfoApi(getAccessTokenApi());
-      if (result.data.scoring !== null) {
-        setValueScoring(result.data.scoring);
+      if (result?.data?.scoring !== null) {
+        setValueScoring(result?.data?.scoring);
         setShowScoring(true);
       }
       setScoringForm(result.data);
