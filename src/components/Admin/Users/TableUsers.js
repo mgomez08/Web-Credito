@@ -8,9 +8,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { AdminContext } from "../../../providers/AdminProvider";
-import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import SwitchActiveUser from "./SwitchActiveUser";
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TableUsers = () => {
   const classes = useStyles();
-  const { users, setUsers, tmp, setTmp } = useContext(AdminContext);
+  const { users } = useContext(AdminContext);
   return (
     <TableContainer className={classes.tableContainer} component={Paper}>
       <Table

@@ -51,10 +51,11 @@ const SwitchActiveUser = ({ active, id }) => {
   const [state, setState] = useState(active);
   const [loading, setLoading] = useState(false);
   const handleChange = async (event) => {
+    event.persist();
     setLoading(true);
     const result = await changeStatusUserApi(id, event.target.checked);
     if (result.ok) {
-      setState(event.target.checked);
+      setState(result.data.active);
       setLoading(false);
     } else {
       setLoading(false);
