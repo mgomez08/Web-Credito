@@ -7,6 +7,7 @@ export default function AdminProvider(props) {
   const [banks, setBanks] = useState();
   const [services, setServices] = useState();
   const [interests, setInterests] = useState();
+  const [users, setUsers] = useState();
   const [tmp, setTmp] = useState();
 
   return (
@@ -18,6 +19,8 @@ export default function AdminProvider(props) {
         setServices,
         interests,
         setInterests,
+        users,
+        setUsers,
         tmp,
         setTmp,
       }}
