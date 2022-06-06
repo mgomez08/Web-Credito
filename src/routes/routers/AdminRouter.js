@@ -10,6 +10,7 @@ import Banks from "../../pages/Admin/Banks/Banks";
 import Dashboard from "../../pages/Admin/Dashboard/Dashboard";
 import Interests from "../../pages/Admin/Interests/Interests";
 import Services from "../../pages/Admin/Services/Services";
+import Users from "../../pages/Admin/Users/Users";
 import Error404 from "../../pages/Error404";
 
 export const AdminRouter = () => {
@@ -42,6 +43,7 @@ export const AdminRouter = () => {
           path="/dashboard/interests/edit/:id"
           component={EditInterest}
         />
+        <Route exact path="/dashboard/users" component={Users} />
         <Route component={Error404} />
       </Switch>
     </>
