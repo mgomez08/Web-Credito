@@ -185,7 +185,7 @@ const FormInterests = ({ mode, interest }) => {
             variant="outlined"
             color="secondary"
             fullWidth
-            type="number"
+            type="text"
             name="tasa_men"
             onChange={handleChange}
             defaultValue={inputs.tasa_men}
@@ -194,6 +194,11 @@ const FormInterests = ({ mode, interest }) => {
             }}
             inputRef={register({
               required: { value: true, message: "Campo obligatorio" },
+              pattern: {
+                value: /^\d{1,2}\.?\d{1,2}$/,
+                message:
+                  "Solo se permiten números decimales con punto, entre 0 y 100 (ej: 2.34)",
+              },
             })}
           />
           <Typography
@@ -211,7 +216,7 @@ const FormInterests = ({ mode, interest }) => {
             variant="outlined"
             color="secondary"
             fullWidth
-            type="number"
+            type="text"
             name="tasa_anu"
             onChange={handleChange}
             defaultValue={inputs.tasa_anu}
@@ -220,6 +225,11 @@ const FormInterests = ({ mode, interest }) => {
             }}
             inputRef={register({
               required: { value: true, message: "Campo obligatorio" },
+              pattern: {
+                value: /^\d{1,2}\.?\d{1,2}$/,
+                message:
+                  "Solo se permiten números decimales con punto, entre 0 y 100 (ej: 2.34)",
+              },
             })}
           />
           <Typography
