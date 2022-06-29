@@ -4,15 +4,22 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
 const Menus = [
   {
-    name: "Iniciar Sesión",
+    hasAction: false,
+    hasButton: false,
+    hasDivider: false,
+    hasSubMenus: false,
     icon: <PersonIcon />,
     link: "/login",
+    name: "Iniciar Sesión",
   },
   {
-    name: "Registrarse",
+    hasAction: false,
+    hasButton: true,
+    hasDivider: false,
+    hasSubMenus: false,
     icon: <PersonAddIcon />,
     link: "/register",
-    hasButton: true,
+    name: "Registrarse",
   },
 ];
 

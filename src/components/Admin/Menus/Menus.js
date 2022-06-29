@@ -5,21 +5,26 @@ import { logout } from "../../../api/auth";
 
 const Menus = [
   {
-    name: "Panel de Administrador",
+    hasAction: false,
+    hasButton: false,
+    hasDivider: false,
+    hasSubMenus: false,
     icon: <AppsIcon />,
     link: "/dashboard",
+    name: "Panel de Administrador",
   },
   {
-    name: "Cerrar Sesión",
-    icon: <PersonIcon />,
-    link: "/login",
     action: () => {
       logout();
       window.location.reload();
     },
-    hasDivider: true,
     hasAction: true,
     hasButton: true,
+    hasDivider: true,
+    hasSubMenus: false,
+    icon: <PersonIcon />,
+    link: "/login",
+    name: "Cerrar Sesión",
   },
 ];
 

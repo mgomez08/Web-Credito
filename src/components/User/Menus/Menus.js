@@ -9,49 +9,65 @@ import { logout } from "../../../api/auth";
 
 const Menus = [
   {
-    name: "Perfil",
-    icon: <PersonPinIcon />,
+    hasAction: false,
+    hasButton: false,
+    hasDivider: false,
     hasSubMenus: true,
+    icon: <PersonPinIcon />,
+    name: "Perfil",
     subMenus: [
       {
-        name: "Editar Perfil",
         icon: <PersonIcon />,
         link: "/perfil",
+        name: "Editar Perfil",
       },
       {
-        name: "Cambiar Contraseña",
         icon: <VpnKeyIcon />,
         link: "/changepassword",
+        name: "Cambiar Contraseña",
       },
     ],
   },
   {
-    name: "Scoring",
+    hasAction: false,
+    hasButton: false,
+    hasDivider: false,
+    hasSubMenus: false,
     icon: <ScoreIcon />,
     link: "/calcular-scoring",
+    name: "Scoring",
   },
   {
-    name: "Simulación de Créditos",
+    hasAction: false,
+    hasButton: false,
+    hasDivider: false,
+    hasSubMenus: false,
     icon: <LocalAtmIcon />,
     link: "/simulacion-creditos",
+    name: "Simulación de Créditos",
   },
   {
-    name: "Bancos",
+    hasAction: false,
+    hasButton: false,
+    hasDivider: false,
+    hasSubMenus: false,
     icon: <AccountBalanceIcon />,
     link: "/banks",
+    name: "Bancos",
   },
 
   {
-    name: "Cerrar Sesión",
-    icon: <PersonIcon />,
-    link: "/login",
     action: () => {
       logout();
       window.location.reload();
     },
-    hasDivider: true,
     hasAction: true,
     hasButton: true,
+    hasDivider: true,
+    hasSubMenus: false,
+    icon: <PersonIcon />,
+    link: "/login",
+    name: "Cerrar Sesión",
   },
 ];
 
