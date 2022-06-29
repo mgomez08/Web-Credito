@@ -137,31 +137,6 @@ export default function MenuTop({ open, handleDrawerOpen, menus }) {
                         })}
                       </Menu>
                     </div>
-
-                    // <div className="special" key={index}>
-                    //   <ListItem button onClick={handleClick}>
-                    //     <ListItemText primary={menu.name} />
-                    //     {openMenu ? <ExpandLess /> : <ExpandMore />}
-                    //   </ListItem>
-                    //   <Collapse in={openMenu} timeout="auto" unmountOnExit>
-                    //     <List component="div" disablePadding>
-                    //       {menu.subMenus.map((subMenu, index) => {
-                    //         return (
-                    //           <Link to={subMenu.link} key={index}>
-                    //             <ListItem
-                    //               button
-                    //               className={classes.nested}
-                    //               onClick={handleClick}
-                    //             >
-                    //               <ListItemIcon>{subMenu.icon}</ListItemIcon>
-                    //               <ListItemText primary={subMenu.name} />
-                    //             </ListItem>
-                    //           </Link>
-                    //         );
-                    //       })}
-                    //     </List>
-                    //   </Collapse>
-                    // </div>
                   );
                 }
 
