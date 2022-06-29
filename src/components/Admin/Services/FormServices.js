@@ -83,6 +83,8 @@ const FormServices = ({ mode, service }) => {
         defaultValue={inputs.name_service}
         inputRef={register({
           required: { value: true, message: "Campo obligatorio" },
+          minLength: { value: 3, message: "Mínimo 3 caracteres" },
+          maxLength: { value: 60, message: "Máximo 60 caracteres" },
         })}
       />
       <Typography variant="body1" display="block" color="error" gutterBottom>
