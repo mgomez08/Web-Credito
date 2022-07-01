@@ -1,4 +1,5 @@
 import { basePath, apiVersion } from "./config";
+import { getAccessTokenApi } from "./auth";
 
 const BASE_URL = `${basePath}/${apiVersion}/user`;
 
@@ -226,6 +227,27 @@ export const calculateScoringApi = async (token) => {
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
+    },
+  };
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
+};
+
+export const getBankServicesApi = async () => {
+  const url = `${BASE_URL}/get-bank-services`;
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getAccessTokenApi(),
     },
   };
   try {
