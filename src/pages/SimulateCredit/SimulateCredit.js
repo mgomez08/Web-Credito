@@ -28,7 +28,7 @@ const SimulateCredit = () => {
           variant="h2"
           className={classes.title}
         >
-          Simule su Crédito con cualquier banco
+          Simule su Crédito con Cualquier Banco
         </Typography>
         <Grid
           container
