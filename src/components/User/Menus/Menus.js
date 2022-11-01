@@ -43,7 +43,7 @@ const Menus = [
     hasDivider: false,
     hasSubMenus: false,
     icon: <LocalAtmIcon />,
-    link: "/simulacion-creditos",
+    link: "/simulate-credit",
     name: "Simulación de Créditos",
   },
   {

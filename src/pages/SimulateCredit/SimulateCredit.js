@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { ContentBanks } from "../../components/User/Banks/ContentBanks";
+import ContentSimulateCredit from "../../components/User/SimulateCredit/ContentSimulateCredit";
 
-export default function Banks() {
+const SimulateCredit = () => {
   const useStyles = makeStyles((theme) => ({
     content: {
       [theme.breakpoints.up("md")]: {
@@ -28,16 +28,7 @@ export default function Banks() {
           variant="h2"
           className={classes.title}
         >
-          Lista de Bancos
-        </Typography>
-        <Typography
-          color="initial"
-          align="center"
-          variant="body1"
-          className={classes.title}
-        >
-          A continuación encontrará un listado de bancos en los que podrá
-          comparar sus tasas de interés en algunos productos que estos ofrece.
+          Simule su Crédito con cualquier banco
         </Typography>
         <Grid
           container
@@ -45,10 +36,12 @@ export default function Banks() {
           justify="center"
           className={classes.content}
         >
-          <ContentBanks />
+          <ContentSimulateCredit />
         </Grid>
       </Grid>
       <Grid item xs={1} md={1} />
     </Grid>
   );
-}
+};
+
+export default SimulateCredit;

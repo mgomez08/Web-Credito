@@ -261,3 +261,25 @@ export const getBankServicesApi = async () => {
     };
   }
 };
+
+export const simulateCredit = async (data, token) => {
+  const url = `${BASE_URL}/simulate-credit`;
+  const params = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+  try {
+    const response = await fetch(url, params);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      msg: error.msg,
+    };
+  }
+};

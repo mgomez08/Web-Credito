@@ -26,6 +26,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { AdminRoute } from "./AdminRoute";
 import { AdminRouter } from "./routers/AdminRouter";
+import SimulateCredit from "../pages/SimulateCredit/SimulateCredit";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,6 +97,12 @@ export const AppRouter = () => {
                 exact
                 path="/calcular-scoring"
                 component={Scoring}
+                isLoggedIn={!!user}
+              />
+              <PrivateRoute
+                exact
+                path="/simulate-credit"
+                component={SimulateCredit}
                 isLoggedIn={!!user}
               />
               <PrivateRoute
