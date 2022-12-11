@@ -13,7 +13,6 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import "./FormLogin.scss";
 import { signInApi } from "../../../api/auth";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/constants";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -58,12 +57,8 @@ export default function FormLogin() {
       setMessage(result.msg);
       handleClick("error");
     } else {
-      const { accessToken, refreshToken } = result;
-      localStorage.setItem(ACCESS_TOKEN, accessToken);
-      localStorage.setItem(REFRESH_TOKEN, refreshToken);
       setMessage("Login correcto, redirigiendo");
       handleClick("success");
-      window.location.href = "/";
     }
   };
 

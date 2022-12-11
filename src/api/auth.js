@@ -17,6 +17,7 @@ export const signUpApi = async (data) => {
     const response = await fetch(url, params);
     const result = await response.json();
     if (result.ok) {
+      signInApi({ email: data.email, password: data.password });
       return {
         ok: true,
         message: result.msg,
@@ -46,6 +47,10 @@ export const signInApi = async (data) => {
   try {
     const response = await fetch(url, params);
     const result = await response.json();
+    const { accessToken, refreshToken } = result;
+    localStorage.setItem(ACCESS_TOKEN, accessToken);
+    localStorage.setItem(REFRESH_TOKEN, refreshToken);
+    window.location.href = "/";
     return result;
   } catch (error) {
     return {
