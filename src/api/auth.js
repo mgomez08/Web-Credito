@@ -47,10 +47,12 @@ export const signInApi = async (data) => {
   try {
     const response = await fetch(url, params);
     const result = await response.json();
-    const { accessToken, refreshToken } = result;
-    localStorage.setItem(ACCESS_TOKEN, accessToken);
-    localStorage.setItem(REFRESH_TOKEN, refreshToken);
-    window.location.href = "/";
+    if (result.ok) {
+      const { accessToken, refreshToken } = result;
+      localStorage.setItem(ACCESS_TOKEN, accessToken);
+      localStorage.setItem(REFRESH_TOKEN, refreshToken);
+      window.location.href = "/";
+    }
     return result;
   } catch (error) {
     return {
