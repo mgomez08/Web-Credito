@@ -112,6 +112,11 @@ const FormSimulateCredit = ({
               <option value={36}>36 meses</option>
               <option value={48}>48 meses</option>
               <option value={60}>60 meses</option>
+              <option value={72}>72 meses</option>
+              <option value={84}>84 meses</option>
+              <option value={96}>96 meses</option>
+              <option value={108}>108 meses</option>
+              <option value={120}>120 meses</option>
             </Select>
           </FormControl>
           <Typography

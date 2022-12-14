@@ -88,7 +88,7 @@ const ContentSimulateCredit = () => {
           message="Cargando información..."
         />
       )}
-      {credit.length > 0 && <TableCredit data={credit} />}
+      {credit.length > 0 && !loadingCredit && <TableCredit data={credit} />}
     </Grid>
   );
 };
